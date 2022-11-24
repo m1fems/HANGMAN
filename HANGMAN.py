@@ -77,8 +77,9 @@ while play_again.upper() != 'N':
                 quit()
             guessed_letters.append(guess)
     print('Congratulations you guest the word')
+    word_guessed = False
     while True:
-        play_again = input('Do you want to play again (Y/N)').upper()
+        play_again = input('Do you want to play again (Y/N): ').upper()
         if play_again == 'Y':
             break
         elif play_again == 'N':
