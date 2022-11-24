@@ -1,4 +1,5 @@
 play_again = ''
+word_guessed = False
 while play_again.upper() != 'N':
     word = input('What is going to be the word: ')
     print('\n')
@@ -41,7 +42,18 @@ while play_again.upper() != 'N':
         guess_list.append('_')
     print(guess_list)
     while guess_list.__contains__('_'):
-        guess = input("Guess a letter: ")
+        while True:
+            guess = input("Guess a letter: ")
+            if guess == word:
+                word_guessed = True
+                break
+            elif len(guess) > 1:
+                print('Please write a letter')
+                pass
+            else:
+                break
+        if word_guessed == True:
+            break
         if guessed_letters.__contains__(guess):
             print("Letter already guessed")
             print(f'Letters guessed: {guessed_letters}')
