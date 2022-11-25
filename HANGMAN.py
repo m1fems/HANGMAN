@@ -74,7 +74,7 @@ while play_again.upper() != 'N':
             if lives == 0:
                 print("You don't have any more lives")
                 print(f'The word was {word}')
-                quit()
+                break
             guessed_letters.append(guess)
     print('Congratulations you guest the word')
     word_guessed = False
