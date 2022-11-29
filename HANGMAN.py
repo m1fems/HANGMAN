@@ -35,16 +35,18 @@ while play_again.upper() != 'N':
     guess_list = []
     guessed_letters = []
     lives = 9
-
     for letter in word.lower():
         coded_word.append(letter.lower())
     for i in range(len(word)):
-        guess_list.append('_')
+        if word[i].lower() == word[0].lower() or word[i].lower() == word[-1].lower():
+            guess_list.append(word[i])
+        else:
+            guess_list.append('_')
     print(guess_list)
     while guess_list.__contains__('_'):
         while True:
             guess = input("Guess a letter: ")
-            if guess == word:
+            if guess.lower() == word.lower():
                 word_guessed = True
                 break
             elif len(guess) > 1:
@@ -52,7 +54,7 @@ while play_again.upper() != 'N':
                 pass
             else:
                 break
-        if word_guessed == True:
+        if word_guessed:
             break
         if guessed_letters.__contains__(guess):
             print("Letter already guessed")
@@ -62,7 +64,7 @@ while play_again.upper() != 'N':
                 cnt = 0
                 for i in coded_word:
                     if i.lower() == guess.lower():
-                            guess_list[cnt] = guess.lower()
+                        guess_list[cnt] = guess.lower()
                     cnt += 1
                 print(guess_list)
                 pass
@@ -74,7 +76,7 @@ while play_again.upper() != 'N':
             if lives == 0:
                 print("You don't have any more lives")
                 print(f'The word was {word}')
-                break
+                quit()
             guessed_letters.append(guess)
     print('Congratulations you guest the word')
     word_guessed = False
